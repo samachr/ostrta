@@ -36,3 +36,21 @@ Server starting at timestamp: 1428810282443
 OSTRTA document searcher. Enter EOF to quit
 Boolean logic operators AND and OR allowed
 Ready for queries
+
+Server starting at timestamp: 1428811999117
+0: 
+OSTRTA document searcher. Enter EOF to quit
+Boolean logic operators AND and OR allowed
+Ready for queries
+
+Server starting at timestamp: 1428812145754
+0: 
+OSTRTA document searcher. Enter EOF to quit
+Boolean logic operators AND and OR allowed
+Ready for queries
+
+Server starting at timestamp: 1428812223597
+0: 
+OSTRTA document searcher. Enter EOF to quit
+Boolean logic operators AND and OR allowed
+Ready for queries

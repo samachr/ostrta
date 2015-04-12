@@ -4,10 +4,7 @@ var fs = require('fs');
 var sys = require('sys');
 var currentRes;
 var searchReady = "this is a search";
-var html = '<html><body><form method="post" action="./">Search: <input type="text" name="a" /><input type="submit" value="Submit" /></form></body>';
-
-var html2 = '<!DOCTYPE html><html><head><link rel="stylesheet" type="text/css" href="myCSS.css"><meta charset="UTF-8"><title>Osterta</title></head><body><!--<p class="a"><span class="box">osterta</span></p>--><div class="middle"><img class="c" src="Osterta_Title.jpg" alt="Title box"/><div class="centered" ><input type="text" value=""></div><div class="smCent" ><button style="width:402px; height:26px; font-family: futura; font-size: 16px;">Search</button></div><div><footer><p class="b">One Search To Rule Them All<br>Created by Nathan Baggins and Samwise Christensen</p></footer></body>';
-
+var html = '<html><body><a href="http://52.10.132.16:8080">OSTRTA</a><form method="post" action="./">Search: <input type="text" name="a" /><input type="submit" value="Submit" /></form></body>';
 
 var http = require('http');
 
@@ -35,16 +32,6 @@ var server = http.createServer(function(req, res) {
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.end(html);
     }
-
-  
-  
- // if (req.method == 'POST') {
-  //  req.on('data'), function (data) {
- // }
-  //sys.puts("the");
-  //res.writeHead(200);
-  //currentRes = res;
-  //res.end(searchReady);
 });
 server.listen(3000);
 
@@ -58,7 +45,16 @@ process.stdin.on('data', function (input) {
   if(ready) {
     searchReady = input.toString();
     if(currentRes) {
-    currentRes.end(html + input.toString());
+    
+    var resultBuilder = html;
+    
+    for (page in input.toString().split(" ")) {
+      resultBuilder += '<p><a href="http://52.10.132.16:8080/documents/cranfield00'+(page>9 ? "" + page:"0"+page)+'.html">'+(page>9 ? "" + page:"0"+page)+'</a></p>';
+    }
+    
+    currentRes.end(resultBuilder);
+    
+    
     currentRes=false;
     }
   }
