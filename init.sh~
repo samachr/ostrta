@@ -1,3 +1,0 @@
-cd server
-bash ./server/serverGlue.sh
-http-server ../client
