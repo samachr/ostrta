@@ -34,3 +34,8 @@ stream
 EOF
 EOF
 stream
+stream
+stream
+stream
+stream
+stream AND a

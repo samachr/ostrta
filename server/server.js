@@ -49,7 +49,7 @@ process.stdin.on('data', function (input) {
     var resultBuilder = html;
     var pages = input.toString().split(" ");
 	  var page;
-	  resultBuilder += '<p>Found results on '+pages.legnth+' pages</p>'
+	  resultBuilder += '<p>Found results on '+pages.length+' pages</p>';
 	
     for (var i = 0; i < pages.length-1;i++) {
 	page = pages[i];

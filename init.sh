@@ -1,3 +1,6 @@
+#!/bin/bash
 cd server
-bash ./serverGlue.sh
-http-server ../client
+/home/ubuntu/ostrta/server/serverGlue.sh &
+disown
+nohup http-server /home/ubuntu/ostrta/client &
+disown
