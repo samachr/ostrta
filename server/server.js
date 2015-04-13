@@ -53,7 +53,7 @@ process.stdin.on('data', function (input) {
       resultBuilder += '<p>'+searchQuery+' was not found in any documents</p>';
     } else {
 	    var page;
-	    resultBuilder += '<p>Found results on '+pages.length-1+' pages</p>';
+	    resultBuilder += '<p>Found results on '+(pages.length-1)+' pages</p>';
 	
       for (var i = 0; i < pages.length-1;i++) {
 	    page = pages[i];
