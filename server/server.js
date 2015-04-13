@@ -49,18 +49,19 @@ process.stdin.on('data', function (input) {
     var html = '<html><body><a href="http://52.10.132.16:8080">OSTRTA</a><form method="post" action="./">Search: <input style="display:inline-block;" type="text" name="a" value="'+searchQuery+'"/><input style="display:inline-block;" type="submit" value="Submit" /></form></body>';
     var resultBuilder = html;
     var pages = input.toString().split(" ");
-	  var page;
-	  resultBuilder += '<p>Found results on '+pages.length+' pages</p>';
+    if (pages[0] == "not") {
+      resultBuilder += '<p>'+searchQuery+' was not found in any documents</p>';
+    } else {
+	    var page;
+	    resultBuilder += '<p>Found results on '+pages.length+' pages</p>';
 	
-    for (var i = 0; i < pages.length-1;i++) {
-	page = pages[i];
-	resultBuilder += '<p><a href="http://52.10.132.16:8080/documents/cranfield00'+(page>9 ? "" + page:"0"+page)+'.html">'+page+'<br/>cranfield00'+(page>9 ? "" + page:"0"+page)+'</a></p>';
+      for (var i = 0; i < pages.length-1;i++) {
+	    page = pages[i];
+	    resultBuilder += '<p><a href="http://52.10.132.16:8080/documents/cranfield00'+(page>9 ? "" + page:"0"+page)+'.html">'+page+'<br/>cranfield00'+(page>9 ? "" + page:"0"+page)+'</a></p>';
+      }
     }
     
-    
     currentRes.end(resultBuilder);
-    
-    
     currentRes=false;
     }
   }
