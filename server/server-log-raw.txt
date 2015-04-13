@@ -54,3 +54,59 @@ Server starting at timestamp: 1428812223597
 OSTRTA document searcher. Enter EOF to quit
 Boolean logic operators AND and OR allowed
 Ready for queries
+
+Server starting at timestamp: 1428812498481
+
+Server starting at timestamp: 1428812508077
+0: 
+OSTRTA document searcher. Enter EOF to quit
+Boolean logic operators AND and OR allowed
+Ready for queries
+1: 39 16 2 1 
+2: 39 16 2 1 
+
+Server starting at timestamp: 1428812884704
+0: 
+OSTRTA document searcher. Enter EOF to quit
+Boolean logic operators AND and OR allowed
+Ready for queries
+1: 39 16 2 1 
+2: 39 16 2 1 
+
+Server starting at timestamp: 1428812975284
+0: 
+OSTRTA document searcher. Enter EOF to quit
+Boolean logic operators AND and OR allowed
+Ready for queries
+1: not found
+2: 39 16 2 1 
+3: 39 16 2 1 
+4: 39 16 2 1 
+5: 39 16 2 1 
+6: 50 49 48 47 46 45 44 43 42 41 40 39 38 37 36 35 34 33 32 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 
+7: 39 16 2 1 
+8: not found
+9: 50 49 48 47 46 45 44 43 42 41 40 39 38 37 36 35 34 33 32 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 
+10: not found
+11: 48 32 27 9 
+12: not found
+13: 17 
+14: 50 49 48 47 46 45 44 43 42 41 40 39 38 37 36 35 34 33 32 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 
+
+Server starting at timestamp: 1428819660773
+0: 
+OSTRTA document searcher. Enter EOF to quit
+Boolean logic operators AND and OR allowed
+Ready for queries
+1: not found
+2: 39 16 2 1 
+
+Server starting at timestamp: 1428819749930
+3: 48 39 32 27 16 9 2 1 
+4: 39 16 2 1 
+
+Server starting at timestamp: 1428934628311
+
+Server starting at timestamp: 1428934720593
+
+Server starting at timestamp: 1428934752088

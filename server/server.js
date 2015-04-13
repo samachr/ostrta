@@ -47,9 +47,12 @@ process.stdin.on('data', function (input) {
     if(currentRes) {
     
     var resultBuilder = html;
-    
-    for (page in input.toString().split(" ")) {
-      resultBuilder += '<p><a href="http://52.10.132.16:8080/documents/cranfield00'+(page>9 ? "" + page:"0"+page)+'.html">'+(page>9 ? "" + page:"0"+page)+'</a></p>';
+    var pages = input.toString().split(" ");
+	var page;
+    for (var i = 0; i < pages.length-1;i++) {
+	page = pages[i];
+      
+	resultBuilder += '<p><a href="http://52.10.132.16:8080/documents/cranfield00'+(page>9 ? "" + page:"0"+page)+'.html">'+(page>9 ? "" + page:"0"+page)+'</a></p>';
     }
     
     currentRes.end(resultBuilder);
