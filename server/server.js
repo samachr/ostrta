@@ -4,7 +4,7 @@ var fs = require('fs');
 var sys = require('sys');
 var currentRes;
 var searchQuery = "";
-var html = '<html><body><a href="http://52.10.132.16:8080">OSTRTA</a><form method="post" action="./">Search: <input style="display:inline-block;" type="text" name="a" value="'+searchQuery+'"/><input style="display:inline-block;" type="submit" value="Submit" /></form></body>';
+var html = '<html><body><a href="http://52.10.132.16:8080">OSTRTA</a><form method="post" action="./">Search: <input style="display:inline-block;" type="text" name="a" value="'+searchQuery+'" autofocus/><input style="display:inline-block;" type="submit" value="Submit" /></form></body>';
 
 var http = require('http');
 
@@ -46,7 +46,7 @@ process.stdin.on('data', function (input) {
   if(ready) {
     searchReady = input.toString();
     if(currentRes) {
-    var html = '<html><body><a href="http://52.10.132.16:8080">OSTRTA</a><form method="post" action="./">Search: <input style="display:inline-block;" type="text" name="a" value="'+searchQuery+'"/><input style="display:inline-block;" type="submit" value="Submit" /></form></body>';
+    var html = '<html><body><a href="http://52.10.132.16:8080">OSTRTA</a><form method="post" action="./">Search: <input style="display:inline-block;" type="text" name="a" value="'+searchQuery+'" autofocus /><input style="display:inline-block;" type="submit" value="Submit" /></form></body>';
     var resultBuilder = html;
     var pages = input.toString().split(" ");
     if (pages[0] == "not") {
