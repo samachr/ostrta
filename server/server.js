@@ -3,8 +3,8 @@ var ready = false;
 var fs = require('fs');
 var sys = require('sys');
 var currentRes;
-var searchReady = "this is a search";
-var html = '<html><body><a href="http://52.10.132.16:8080">OSTRTA</a><form method="post" action="./">Search: <input style="display:inline-block;" type="text" name="a" /><input style="display:inline-block;" type="submit" value="Submit" /></form></body>';
+var searchQuery = "";
+var html = '<html><body><a href="http://52.10.132.16:8080">OSTRTA</a><form method="post" action="./">Search: <input style="display:inline-block;" type="text" name="a" value="'+searchQuery+'"/><input style="display:inline-block;" type="submit" value="Submit" /></form></body>';
 
 var http = require('http');
 
@@ -19,8 +19,9 @@ var server = http.createServer(function(req, res) {
         req.on('end', function () {
             //console.log("Body: " + body);
             body = body.substring(2).split('+').join(" ");
+            searchQuery = body;
             sys.puts(body);
-              fs.appendFileSync('queries.txt', body + "\n");
+            fs.appendFileSync('queries.txt', body + "\n");
         });
         res.writeHead(200, {'Content-Type': 'text/html'});
         currentRes = res;
@@ -45,7 +46,7 @@ process.stdin.on('data', function (input) {
   if(ready) {
     searchReady = input.toString();
     if(currentRes) {
-    
+    var html = '<html><body><a href="http://52.10.132.16:8080">OSTRTA</a><form method="post" action="./">Search: <input style="display:inline-block;" type="text" name="a" value="'+searchQuery+'"/><input style="display:inline-block;" type="submit" value="Submit" /></form></body>';
     var resultBuilder = html;
     var pages = input.toString().split(" ");
 	  var page;
