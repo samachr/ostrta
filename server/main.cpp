@@ -1,10 +1,3 @@
-//TODO: remove memory leak caused by returns from queries
-//TODO: allow multiple queries as input from user (stringstream + getline?)
-
-//TODO: MAKE IT AWESOME!
-//nodejs integration
-//awesome web design
-
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -41,7 +34,7 @@ public:
 	{
 		next = NULL;
 	}
-
+	
 	Record(string s, int docNum)
 	{
 		word = s;
@@ -62,17 +55,6 @@ public:
 	}
 
 };
-
-void deletePages(Page*p) {
-	Page *temp;
-	while(p!=NULL)
-	{
-		temp=p;
-		p=p->next;
-		delete temp;
-	}
-}
-
 
 //a dynamically allocated hash table for storing records
 class Table
@@ -143,44 +125,8 @@ public:
 			}
 		}
 	}
-
-	int print()
-	{
-		ofstream fout("output.txt");
-		int longestList = 0;
-		int unique = 0;
-		int nonEmpty = 1;
-
-		for (int n = 0; n < N; n++)//THIS WILL GO THROUGH EACH ARRAY POSITION
-		{
-			int length = 0;
-			if (entries[n] != NULL)
-			{
-				nonEmpty++;
-
-				//GO THROUGH THE LINKED LIST AND PRINT OUT THE WORDS
-				for (Record* p = entries[n]; p != NULL; p = p->next)
-				{
-					fout << p->word << " ";
-					length++;
-				}
-			}
-			fout << endl;
-			if (length > longestList) {
-				longestList = length;
-			}
-			unique += length;
-		}
-		
-		
-
-		fout << unique << " unique words." << endl;
-		fout << "average length("<<unique<<"/"<<nonEmpty<<"): " << (double)unique / nonEmpty  << endl;
-		fout.close();
-		return longestList;
-	}
-
-
+	
+  //gets the hash for specified string
 	int hashCode(string s){
 		int hash=0;
 
@@ -196,6 +142,7 @@ public:
 		return hash;
 	}
 
+  //returns a pages pointer that is a linked list of documents the word appears on
 	Page* query(string word) {
 		Record* hashLocation = entries[hashCode(word)];
 		for( ; hashLocation != NULL; hashLocation = hashLocation->next) {
@@ -205,7 +152,9 @@ public:
 		}
 		return NULL;
 	}
-
+  
+  //combine two queries, keeping only the pages that are the same
+  //at the end it reverses them so the algorithm can be chained
 	Page* andQuery(Page* left, Page* right) {
 		Page* result = NULL;
 		while (left != NULL && right != NULL) {
@@ -240,7 +189,8 @@ public:
 		}
 		return reversedResult;
 	}
-
+  
+  //combine query results, keeping all pages in both lists
 	Page* orQuery(Page* left, Page* right) {
 		Page* result = NULL;
 		while (left != NULL && right != NULL) {
@@ -308,6 +258,10 @@ public:
 	}
 };
 
+//index all the terms by pulling them from files and placing into hash table, then
+//wait for queries. Read queries a line at a time and divide up the words and
+//boolean operators, then call the corresponding functions to get and combine
+//search results.
 int main() {
 
 	Table indexHashTable(499);
@@ -327,7 +281,6 @@ int main() {
 			baseFileName[23] = (char)((i/10)+48);//10's place
 			baseFileName[24] = (char)((i%10)+48);//one's place
 		}
-		//baseFileName[2] = '\0';
 		//cout << baseFileName << endl;
 		ifstream fin(baseFileName.c_str());
 		string currentWord;
